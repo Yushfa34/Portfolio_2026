@@ -18,7 +18,11 @@ export function ProgressRing({
   const offset = c - (progress / 100) * c;
   return (
     <div className="relative" style={{ width: size, height: size }}>
-      <svg width={size} height={size}>
+      <svg
+        width={size}
+        height={size}
+        style={{ transform: "rotate(-90deg)" }}
+      >
         <circle
           cx={size / 2} cy={size / 2} r={r}
           stroke="var(--color-border)" strokeWidth={stroke} fill="none"
@@ -29,9 +33,8 @@ export function ProgressRing({
           strokeDasharray={c}
           initial={{ strokeDashoffset: c }}
           whileInView={{ strokeDashoffset: offset }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.4, ease: "easeOut" }}
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
         />
       </svg>
       <div className="absolute inset-0 grid place-items-center font-display font-extrabold text-sm">
