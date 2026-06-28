@@ -290,7 +290,7 @@ function Nav() {
             className="h-9 w-9 rounded-full border-2 border-border object-cover"
             style={{ boxShadow: "0 3px 0 0 var(--color-primary-dark)" }}
           />
-          yushfashafiq.dev
+          yushfashafiq
         </a>
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
@@ -1072,7 +1072,7 @@ function Footer() {
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground" style={{ boxShadow: "0 3px 0 0 var(--color-primary-dark)" }}>
                 <Code2 className="h-5 w-5" />
               </span>
-              yushfashafiq.dev
+              yushfashafiq
             </div>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               Full Stack Developer leveling up skills and helping teams ship products users love.
@@ -1109,7 +1109,7 @@ function Footer() {
           </div>
         </div>
         <div className="mt-10 border-t-2 border-border pt-6 text-center text-xs font-bold text-muted-foreground">
-           {new Date().getFullYear()} yushfashafiq.dev
+           {new Date().getFullYear()} yushfashafiq
         </div>
       </div>
     </footer>
