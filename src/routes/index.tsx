@@ -6,7 +6,7 @@ import {
   Code2, Server, Database, Cloud, Github, Linkedin, Mail, Download,
   Trophy, Rocket, Star, Sparkles, Flame, Zap, Heart, ArrowRight,
   ExternalLink, Send, CheckCircle2, Terminal, Cpu, GitBranch,
-  MessageSquare, Clock, MapPin,Palette,
+  MessageSquare, Clock, MapPin,Palette,X,
   Fingerprint, Network, Lock, ShoppingCart, BookOpen, ArrowDownUp,
   Droplet, Ghost, Spade, GraduationCap, ShoppingBasket,
 } from "lucide-react";
@@ -1140,6 +1140,7 @@ function PortfolioPage() {
       <Skills />
       <Journey />
       <Projects />
+      <DesignWork />
       <Experience />
       <Achievements />
       <GitHubStats />
@@ -1148,4 +1149,111 @@ function PortfolioPage() {
       <Footer />
     </main>
   );
+const designs = [
+  {
+    src: "/designs/pals-graphics.jpg",
+    title: "PALS Core Body — Reveal Card",
+    tag: "Social Media",
+  },
+  {
+    src: "/designs/tech4d-finalcall.png",
+    title: "Tech4D Internship — Final Call",
+    tag: "Campaign",
+  },
+  {
+    src: "/designs/pals-directors.jpg",
+    title: "PALS Core Body — Directors Series",
+    tag: "Reveal Series",
+  },
+  {
+    src: "/designs/tech4d-tracks.png",
+    title: "Tech4D Internship — Tracks",
+    tag: "Editorial",
+  },
+  {
+    src: "/designs/pals-leads.jpg",
+    title: "PALS Core Body — Leads Series",
+    tag: "Reveal Series",
+  },
+];
+
+function DesignWork() {
+  const [active, setActive] = useState<number | null>(null);
+
+  return (
+    <Section
+      id="design"
+      eyebrow="Creative quests"
+      title="Design work"
+      subtitle="Beyond code — I lead the design team for university societies, building campaigns and reveal series from scratch in Figma & Canva."
+    >
+      <div className="[column-fill:_balance] gap-4 sm:columns-2 lg:columns-3">
+        {designs.map((d, i) => (
+          <motion.button
+            key={d.src}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
+            whileHover={{ y: -4 }}
+            onClick={() => setActive(i)}
+            className="group card-duo mb-4 block w-full break-inside-avoid overflow-hidden p-0 text-left"
+            aria-label={`View ${d.title}`}
+          >
+            <div className="relative overflow-hidden">
+              <img
+                src={d.src}
+                alt={d.title}
+                loading="lazy"
+                className="w-full transition duration-500 group-hover:scale-[1.04]"
+              />
+              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-4 opacity-0 transition group-hover:opacity-100">
+                <div>
+                  <span className="rounded-full bg-warning px-2.5 py-1 text-xs font-extrabold text-warning-foreground">
+                    {d.tag}
+                  </span>
+                  <div className="mt-2 font-display text-base font-extrabold text-white drop-shadow">
+                    {d.title}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {active !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActive(null)}
+            className="fixed inset-0 z-[60] grid place-items-center bg-black/85 p-4 backdrop-blur"
+          >
+            <button
+              onClick={() => setActive(null)}
+              aria-label="Close"
+              className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-2xl border-2 border-white/30 bg-white/10 text-white transition hover:bg-white/20"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <motion.img
+              key={active}
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              src={designs[active].src}
+              alt={designs[active].title}
+              onClick={(e) => e.stopPropagation()}
+              className="max-h-[88vh] max-w-full rounded-2xl border-2 border-white/20 object-contain"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Section>
+  );
+}
 }
