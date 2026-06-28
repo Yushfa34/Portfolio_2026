@@ -1149,6 +1149,7 @@ function PortfolioPage() {
       <Footer />
     </main>
   );
+}
 const designs = [
   {
     src: "/designs/pals-graphics.jpg",
@@ -1163,6 +1164,11 @@ const designs = [
   {
     src: "/designs/pals-directors.jpg",
     title: "PALS Core Body — Directors Series",
+    tag: "Reveal Series",
+  },
+  {
+    src: "/designs/pals-codirectors.jpg",
+    title: "PALS Core Body — Co-Directors Series",
     tag: "Reveal Series",
   },
   {
@@ -1256,4 +1262,4 @@ function DesignWork() {
     </Section>
   );
 }
-}
+
