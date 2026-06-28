@@ -6,7 +6,7 @@ import {
   Code2, Server, Database, Cloud, Github, Linkedin, Mail, Download,
   Trophy, Rocket, Star, Sparkles, Flame, Zap, Heart, ArrowRight,
   ExternalLink, Send, CheckCircle2, Terminal, Cpu, GitBranch,
-  MessageSquare, Clock, MapPin,
+  MessageSquare, Clock, MapPin,Palette,
   Fingerprint, Network, Lock, ShoppingCart, BookOpen, ArrowDownUp,
   Droplet, Ghost, Spade, GraduationCap, ShoppingBasket,
 } from "lucide-react";
@@ -34,6 +34,8 @@ export const Route = createFileRoute("/")({
 // ---------- data ----------
 const skills = [
   // Frontend
+  { name: "Figma", level: 8, xp: 85, group: "Design", color: "var(--color-accent)" },
+  { name: "Canva", level: 9, xp: 92, group: "Design", color: "var(--color-primary)" },
   { name: "React", level: 8, xp: 85, group: "Frontend", color: "var(--color-accent)" },
   { name: "Next.js", level: 7, xp: 78, group: "Frontend", color: "var(--color-foreground)" },
   { name: "TypeScript", level: 7, xp: 75, group: "Frontend", color: "var(--color-accent)" },
@@ -408,8 +410,8 @@ function Hero() {
 }
 
 function Skills() {
-  const groups = ["Frontend", "Backend", "Database", "Cloud"] as const;
-  const icons: Record<string, typeof Code2> = { Frontend: Code2, Backend: Server, Database: Database, Cloud: Cloud };
+  const groups = ["Frontend", "Backend", "Database", "Cloud", "Design"] as const;
+  const icons: Record<string, typeof Code2> = { Frontend: Code2, Backend: Server, Database: Database, Cloud: Cloud, Design: Palette  };
   return (
     <Section id="skills" eyebrow="Skill tree" title="My skill tree" subtitle="Every skill here I've actually used to build and ship something — not just watch tutorials.">
       <div className="grid gap-6 md:grid-cols-2">
