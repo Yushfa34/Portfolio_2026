@@ -1075,7 +1075,7 @@ function Footer() {
               yushfashafiq
             </div>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              Full Stack Developer leveling up skills and helping teams ship products users love.
+              Full Stack Developer leveling up skills and Graphic designer aiming to design beautiful and functional user experiences.
             </p>
           </div>
           <div>
