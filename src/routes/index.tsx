@@ -1205,111 +1205,141 @@ function PortfolioPage() {
     </main>
   );
 }
-const designs = [
+const collections = [
   {
-    src: "/designs/pals-graphics.jpg",
-    title: "PALS Core Body — Reveal Card",
-    tag: "Social Media",
+    id: "pals",
+    name: "PALS UET — Core Body 2026",
+    blurb: "A cohesive reveal series announcing the chapter's core body — one visual system across directors, co-directors and leads.",
+    tag: "Reveal Series",
+    cover: "/designs/pals-graphics.jpg",
+    images: [
+      { src: "/designs/pals-graphics.jpg", title: "Graphics Director — Reveal Card" },
+      { src: "/designs/pals-directors.jpg", title: "Directors Series" },
+      { src: "/designs/pals-codirectors.jpg", title: "Co-Directors Series" },
+      { src: "/designs/pals-leads.jpg", title: "Leads Series" },
+    ],
   },
   {
-    src: "/designs/tech4d-finalcall.png",
-    title: "Tech4D Internship — Final Call",
+    id: "tech4d",
+    name: "Tech4D — Internship Campaign",
+    blurb: "Two art directions for the same campaign: a bold, urgent poster and a calm editorial layout.",
     tag: "Campaign",
-  },
-  {
-    src: "/designs/pals-directors.jpg",
-    title: "PALS Core Body — Directors Series",
-    tag: "Reveal Series",
-  },
-  {
-    src: "/designs/pals-codirectors.jpg",
-    title: "PALS Core Body — Co-Directors Series",
-    tag: "Reveal Series",
-  },
-  {
-    src: "/designs/tech4d-tracks.png",
-    title: "Tech4D Internship — Tracks",
-    tag: "Editorial",
-  },
-  {
-    src: "/designs/pals-leads.jpg",
-    title: "PALS Core Body — Leads Series",
-    tag: "Reveal Series",
+    cover: "/designs/tech4d-finalcall.png",
+    images: [
+      { src: "/designs/tech4d-finalcall.png", title: "Final Call — Poster" },
+      { src: "/designs/tech4d-tracks.png", title: "Internship Tracks — Editorial" },
+    ],
   },
 ];
 
 function DesignWork() {
-  const [active, setActive] = useState<number | null>(null);
+  const [openSet, setOpenSet] = useState<number | null>(null);
+  const [zoom, setZoom] = useState<string | null>(null);
 
   return (
     <Section
       id="design"
       eyebrow="Creative quests"
       title="Design work"
-      subtitle="Beyond code — I lead the design team for university societies, building campaigns and reveal series from scratch in Figma & Canva."
+      subtitle="Beyond code — I lead the design team for university societies, building full campaigns and reveal series from scratch in Figma & Canva."
     >
-      <div className="[column-fill:_balance] gap-4 sm:columns-2 lg:columns-3">
-        {designs.map((d, i) => (
+      {/* Collection cards */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {collections.map((c, i) => (
           <motion.button
-            key={d.src}
+            key={c.id}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
-            whileHover={{ y: -4 }}
-            onClick={() => setActive(i)}
-            className="group card-duo mb-4 block w-full break-inside-avoid overflow-hidden p-0 text-left"
-            aria-label={`View ${d.title}`}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, delay: i * 0.1 }}
+            whileHover={{ y: -6 }}
+            onClick={() => setOpenSet(i)}
+            className="card-duo group overflow-hidden p-0 text-left"
           >
-            <div className="relative overflow-hidden">
+            <div className="relative aspect-[16/10] overflow-hidden">
               <img
-                src={d.src}
-                alt={d.title}
-                loading="lazy"
-                className="w-full transition duration-500 group-hover:scale-[1.04]"
+                src={c.cover}
+                alt={c.name}
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-4 opacity-0 transition group-hover:opacity-100">
-                <div>
-                  <span className="rounded-full bg-warning px-2.5 py-1 text-xs font-extrabold text-warning-foreground">
-                    {d.tag}
-                  </span>
-                  <div className="mt-2 font-display text-base font-extrabold text-white drop-shadow">
-                    {d.title}
-                  </div>
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <span className="absolute right-3 top-3 rounded-full bg-warning px-2.5 py-1 text-xs font-extrabold text-warning-foreground">
+                {c.images.length} designs
+              </span>
+              <span className="absolute left-3 top-3 rounded-full bg-black/40 px-2.5 py-1 text-xs font-bold text-white backdrop-blur">
+                {c.tag}
+              </span>
+            </div>
+            <div className="p-6">
+              <h3 className="text-2xl">{c.name}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{c.blurb}</p>
+              <span className="btn-duo mt-4 inline-flex">
+                View collection <ArrowRight className="h-4 w-4" />
+              </span>
             </div>
           </motion.button>
         ))}
       </div>
 
-      {/* Lightbox */}
+      {/* Collection panel */}
       <AnimatePresence>
-        {active !== null && (
+        {openSet !== null && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActive(null)}
-            className="fixed inset-0 z-[60] grid place-items-center bg-black/85 p-4 backdrop-blur"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setOpenSet(null)}
+            className="fixed inset-0 z-[55] overflow-y-auto bg-black/85 p-4 backdrop-blur sm:p-8"
           >
             <button
-              onClick={() => setActive(null)}
-              aria-label="Close"
-              className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-2xl border-2 border-white/30 bg-white/10 text-white transition hover:bg-white/20"
+              onClick={() => setOpenSet(null)} aria-label="Close"
+              className="fixed right-5 top-5 z-10 grid h-11 w-11 place-items-center rounded-2xl border-2 border-white/30 bg-white/10 text-white transition hover:bg-white/20"
             >
               <X className="h-5 w-5" />
             </button>
-            <motion.img
-              key={active}
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              src={designs[active].src}
-              alt={designs[active].title}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 30, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-h-[88vh] max-w-full rounded-2xl border-2 border-white/20 object-contain"
+              className="mx-auto max-w-5xl"
+            >
+              <h3 className="font-display text-3xl font-extrabold text-white">
+                {collections[openSet].name}
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm text-white/70">
+                {collections[openSet].blurb}
+              </p>
+              <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                {collections[openSet].images.map((img) => (
+                  <button
+                    key={img.src}
+                    onClick={() => setZoom(img.src)}
+                    className="group overflow-hidden rounded-2xl border-2 border-white/20 text-left"
+                  >
+                    <img
+                      src={img.src} alt={img.title} loading="lazy"
+                      className="w-full transition duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div className="bg-white/10 px-4 py-3 font-display text-sm font-extrabold text-white">
+                      {img.title}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Full-screen zoom */}
+      <AnimatePresence>
+        {zoom && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setZoom(null)}
+            className="fixed inset-0 z-[60] grid place-items-center bg-black/95 p-4"
+          >
+            <motion.img
+              initial={{ scale: 0.92 }} animate={{ scale: 1 }} exit={{ scale: 0.92 }}
+              src={zoom} alt="" onClick={(e) => e.stopPropagation()}
+              className="max-h-[92vh] max-w-full rounded-2xl object-contain"
             />
           </motion.div>
         )}
@@ -1317,4 +1347,3 @@ function DesignWork() {
     </Section>
   );
 }
-
