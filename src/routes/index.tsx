@@ -8,7 +8,7 @@ import {
   ExternalLink, Send, CheckCircle2, Terminal, Cpu, GitBranch,
   MessageSquare, Clock, MapPin,Palette,X,
   Fingerprint, Network, Lock, ShoppingCart, BookOpen, ArrowDownUp,
-  Droplet, Ghost, Spade, GraduationCap, ShoppingBasket,
+  Droplet, Ghost, Spade, GraduationCap, ShoppingBasket,Menu,
 } from "lucide-react";
 import { Mascot } from "@/component/portfolio/Mascot";
 import { ProgressRing } from "@/component/portfolio/ProgressRing";
@@ -290,10 +290,12 @@ function Section({ id, eyebrow, title, subtitle, children }: {
 }
 
 function Nav() {
+  const [open, setOpen] = useState(false);
   const links = [
     { href: "#skills", label: "Skills" },
     { href: "#journey", label: "Journey" },
     { href: "#projects", label: "Projects" },
+    { href: "#design", label: "Design" },
     { href: "#experience", label: "Experience" },
     { href: "#contact", label: "Contact" },
   ];
@@ -302,7 +304,6 @@ function Nav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
         <a href="#top" className="flex items-center gap-2 font-display text-xl font-extrabold">
           <img
-
             src="/yushfa.jpeg"
             alt="Yushfa Shafiq"
             className="h-9 w-9 rounded-full border-2 border-border object-cover"
@@ -310,6 +311,8 @@ function Nav() {
           />
           yushfashafiq
         </a>
+
+        {/* Desktop links */}
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <a key={l.href} href={l.href}
@@ -318,11 +321,47 @@ function Nav() {
             </a>
           ))}
         </nav>
+
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <a href="#contact" className="btn-duo hidden sm:inline-flex">Hire me</a>
+
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+            className="grid h-11 w-11 place-items-center rounded-2xl border-2 border-border bg-card text-foreground md:hidden"
+            style={{ boxShadow: "0 3px 0 0 var(--color-border)" }}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile dropdown */}
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden border-t-2 border-border bg-background md:hidden"
+          >
+            <div className="mx-auto grid max-w-6xl gap-1 px-5 py-4">
+              {links.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+                  className="rounded-xl px-3 py-3 font-bold text-muted-foreground transition hover:bg-secondary hover:text-foreground">
+                  {l.label}
+                </a>
+              ))}
+              <a href="#contact" onClick={() => setOpen(false)} className="btn-duo mt-2 justify-center">
+                Hire me
+              </a>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
