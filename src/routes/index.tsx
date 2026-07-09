@@ -174,6 +174,16 @@ const experience = [
     ],
   },
   {
+    role: "Graphic Design Intern",
+    company: "JSS",
+    period: "2025 — 2026",
+    points: [
+      "Assisted in creating visual designs for various marketing materials",
+      "Collaborated with the team to develop a cohesive brand identity",
+      "Designed social media graphics and event posters",
+    ],
+  },
+  {
     role: "Graphic Design Director",
     company: "PALS UET — PakLaunch Chapter",
     period: "2025 — Present",
@@ -198,6 +208,7 @@ const experience = [
 const achievements = [
   { icon: "🎓", title: "CS @ UET Lahore", desc: "Batch 2024–2028" },
   { icon: "🏆", title: "Backend Intern", desc: "DevelopersHub Corporation" },
+  { icon: "🎨", title: "Graphic Design Intern", desc: "JSS" },
   { icon: "📜", title: "Event Certificates", desc: "Active in tech community" },
   { icon: "🎨", title: "Design Director", desc: "PALS UET & JSS UET" },
   { icon: "🚀", title: "11+ Projects Built", desc: "Academic & personal" },
@@ -212,6 +223,11 @@ const testimonials = [
     name: "Internship Supervisor",
     role: "DevelopersHub Corporation",
     text: "Yushfa showed great initiative during her internship — her Bookstore API and ShopEase backend were clean, well-structured, and deployed successfully.",
+  },
+  {
+    name: "Internship Supervisor",
+    role: "JSS",
+    text: "Yushfa demonstrated excellent design skills during her internship — her visual designs for marketing materials were creative and well-executed.",
   },
   {
     name: "Kashaf Rauf",
@@ -1103,7 +1119,7 @@ function Footer() {
 <FooterIcon href="https://mail.google.com/mail/?view=cm&to=yushfashafiq@gmail.com" label="Email">
   <Mail className="h-5 w-5" />
 </FooterIcon>
-<a href="https://drive.google.com/file/d/1BTeYPopOFZfBdySGbW6D-CFvmtkLL2Zs/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-duo-outline !py-2 !px-3 !text-xs">
+<a href="https://drive.google.com/file/d/1dxVzPzvvf9YUWiOLnpAbGq2xpHjIqqYP/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-duo-outline !py-2 !px-3 !text-xs">
   <Download className="h-4 w-4" /> Resume
 </a>
               
