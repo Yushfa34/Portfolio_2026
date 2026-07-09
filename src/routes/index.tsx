@@ -1158,7 +1158,7 @@ function Footer() {
 <FooterIcon href="https://mail.google.com/mail/?view=cm&to=yushfashafiq@gmail.com" label="Email">
   <Mail className="h-5 w-5" />
 </FooterIcon>
-<a href="https://drive.google.com/file/d/1dxVzPzvvf9YUWiOLnpAbGq2xpHjIqqYP/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-duo-outline !py-2 !px-3 !text-xs">
+<a href="https://drive.google.com/file/d/1n3mgGks1vHn6KXidEQgOFBO9V_lb0VHT/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn-duo-outline !py-2 !px-3 !text-xs">
   <Download className="h-4 w-4" /> Resume
 </a>
               
