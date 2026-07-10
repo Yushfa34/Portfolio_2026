@@ -709,7 +709,7 @@ function GitHubStats() {
             className="card-duo p-5"
           >
             <Icon className="mb-2 h-6 w-6 text-primary" />
-            <div className="font-display text-3xl font-extrabold"><Counter to={value} /></div>
+            <div className="font-display text-3xl font-extrabold"><Counter to={value ?? 0} /></div>
             <div className="text-sm font-bold text-muted-foreground">{label}</div>
           </motion.div>
         ))}
