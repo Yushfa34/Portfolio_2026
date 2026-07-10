@@ -673,8 +673,8 @@ function GitHubStats() {
       .then((res) => res.json())
       .then((data) => {
         setStats({
-          repos: data.public_repos,
-          followers: data.followers,
+          repos: typeof data.public_repos === "number" ? data.public_repos : 12,
+          followers: typeof data.followers === "number" ? data.followers : 5,
         });
       })
       .catch(() => {
