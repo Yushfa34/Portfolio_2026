@@ -6,7 +6,7 @@ import {
   Code2, Server, Database, Cloud, Github, Linkedin, Mail, Download,
   Trophy, Rocket, Star, Sparkles, Flame, Zap, Heart, ArrowRight,
   ExternalLink, Send, CheckCircle2, Terminal, Cpu, GitBranch,
-  MessageSquare, Clock, MapPin,Palette,X,
+  MessageSquare, Clock, MapPin,Palette,X,Hand,
   Fingerprint, Network, Lock, ShoppingCart, BookOpen, ArrowDownUp,
   Droplet, Ghost, Spade, GraduationCap, ShoppingBasket,Menu,
 } from "lucide-react";
@@ -69,6 +69,16 @@ const journey = [
 ];
 
 const projects = [
+
+  {
+    title: "Puzzlify AI", icon: Hand,
+    desc: "A webcam hand-tracking puzzle game. Make a rectangle with your hands to snap a photo, which becomes a sliding-style swap puzzle. Runs fully in-browser with MediaPipe hand tracking — no backend, no uploads, photos never leave your device.",
+    tech: ["Next.js 15", "TypeScript", "MediaPipe", "Framer Motion", "Zustand", "Canvas"],
+    xp: 4500, difficulty: 5, status: "Completed",
+    gradient: "from-[oklch(0.72_0.16_230)] to-[oklch(0.65_0.22_300)]",
+    github: "https://github.com/Yushfa34/puzzlify",
+    live: "https://puzzlify-ten.vercel.app",
+  },
   {
     title: "ContentDNA", icon: Fingerprint,
     desc: "Full-stack digital forensics platform to trace origin and spread of harmful content. Generates SHA-256, pHash, aHash, and dHash fingerprints per image, embeds LSB steganography watermarks, builds propagation lineage graphs, and produces court-ready PDF reports with full chain of custody logs. Runs in 4 Docker containers.",
@@ -211,7 +221,7 @@ const achievements = [
   { icon: "🎨", title: "Graphic Design Intern", desc: "JSS" },
   { icon: "📜", title: "Event Certificates", desc: "Active in tech community" },
   { icon: "🎨", title: "Design Director", desc: "PALS UET & JSS UET" },
-  { icon: "🚀", title: "11+ Projects Built", desc: "Academic & personal" },
+  { icon: "🚀", title: `${projects.length}+ Projects Built`, desc: "Academic & personal" },
   { icon: "🔐", title: "InfoSec Projects", desc: "Content DNA & SecureNote" },
   { icon: "🛒", title: "Live Deployments", desc: "Railway & Vercel" },
   { icon: "🤖", title: "AI Platform", desc: "Syncd — co-built with team" },
@@ -591,10 +601,15 @@ function Projects() {
                 {p.tech.map((t) => <span key={t} className="rounded-full bg-secondary px-3 py-1 text-xs font-bold text-secondary-foreground">{t}</span>)}
               </div>
               <div className="mt-5 flex gap-2">
-  <a href={p.github} target="_blank" rel="noopener noreferrer" className="btn-duo flex-1">
-    View on GitHub <Github className="h-4 w-4" />
-  </a>
-</div>
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="btn-duo flex-1">
+                    Live <ExternalLink className="h-4 w-4" />
+                  </a>
+                )}
+                <a href={p.github} target="_blank" rel="noopener noreferrer" className={p.live ? "btn-duo-outline flex-1" : "btn-duo flex-1"}>
+                  {p.live ? "Code" : "View on GitHub"} <Github className="h-4 w-4" />
+                </a>
+              </div>
             </div>
           </motion.article>
         ))}
