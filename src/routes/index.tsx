@@ -337,9 +337,15 @@ function Nav() {
           <a href="https://drive.google.com/file/d/1BTeYPopOFZfBdySGbW6D-CFvmtkLL2Zs/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-duo-outline hidden sm:inline-flex !py-2 !px-3 !text-xs"
+            aria-label="Download resume"
+            title="Download resume"
+            className="group relative hidden sm:grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground transition hover:brightness-105"
+            style={{ boxShadow: "0 3px 0 0 var(--color-primary-dark)" }}
           >
-            <Download className="h-4 w-4" /> Resume
+            <Download className="h-5 w-5" />
+            <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 font-display text-[9px] font-extrabold uppercase tracking-wide text-muted-foreground">
+              Resume
+            </span>
           </a>
           <a href="#contact" className="btn-duo hidden sm:inline-flex">Hire me</a>
           {/* Hamburger — mobile only */}
@@ -372,7 +378,7 @@ function Nav() {
                 </a>
               ))}
               <a 
-              href="https://drive.google.com/file/d/1BTeYPopOFZfBdySGbW6D-CFvmtkLL2Zs/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1zqtJjXpzjakfhOiBiTaLT5hftVoVSra8/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
