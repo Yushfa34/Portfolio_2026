@@ -332,10 +332,16 @@ function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+       <div className="flex items-center gap-2">
           <ThemeToggle />
+          <a href="https://drive.google.com/file/d/1BTeYPopOFZfBdySGbW6D-CFvmtkLL2Zs/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-duo-outline hidden sm:inline-flex !py-2 !px-3 !text-xs"
+          >
+            <Download className="h-4 w-4" /> Resume
+          </a>
           <a href="#contact" className="btn-duo hidden sm:inline-flex">Hire me</a>
-
           {/* Hamburger — mobile only */}
           <button
             onClick={() => setOpen(!open)}
@@ -365,7 +371,16 @@ function Nav() {
                   {l.label}
                 </a>
               ))}
-              <a href="#contact" onClick={() => setOpen(false)} className="btn-duo mt-2 justify-center">
+              <a 
+              href="https://drive.google.com/file/d/1BTeYPopOFZfBdySGbW6D-CFvmtkLL2Zs/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="btn-duo-outline mt-2 justify-center"
+              >
+                <Download className="h-4 w-4" /> Resume
+              </a>
+              <a href="#contact" onClick={() => setOpen(false)} className="btn-duo justify-center">
                 Hire me
               </a>
             </div>
@@ -1173,7 +1188,7 @@ function Footer() {
 <FooterIcon href="https://mail.google.com/mail/?view=cm&to=yushfashafiq@gmail.com" label="Email">
   <Mail className="h-5 w-5" />
 </FooterIcon>
-<a href="https://drive.google.com/file/d/1n3mgGks1vHn6KXidEQgOFBO9V_lb0VHT/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn-duo-outline !py-2 !px-3 !text-xs">
+<a href="https://drive.google.com/file/d/1zqtJjXpzjakfhOiBiTaLT5hftVoVSra8/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn-duo-outline !py-2 !px-3 !text-xs">
   <Download className="h-4 w-4" /> Resume
 </a>
               
